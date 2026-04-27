@@ -1,0 +1,263 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #e3350d;
+      --red-dark: #b02a0a;
+      --yellow: #ffcb05;
+      --yellow-dark: #c9a200;
+      --bg: #1a1a2e;
+      --card-bg: #16213e;
+      --card-border: #0f3460;
+      --text: #eaeaea;
+      --text-muted: #8892a4;
+      --type-normal: #9da0aa; --type-fire: #ff6b35; --type-water: #4fc3f7;
+      --type-electric: #ffd740; --type-grass: #69c96b; --type-ice: #80deea;
+      --type-fighting: #e57373; --type-poison: #ce93d8; --type-ground: #d4a76a;
+      --type-flying: #90caf9; --type-psychic: #f48fb1; --type-bug: #aed581;
+      --type-rock: #bcaaa4; --type-ghost: #7986cb; --type-dragon: #7c4dff;
+      --type-dark: #546e7a; --type-steel: #90a4ae; --type-fairy: #f8bbd0;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 1rem 3rem;
+    }
+
+    header {
+      width: 100%;
+      max-width: 700px;
+      padding: 2.5rem 0 1.5rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      color: var(--yellow);
+      text-shadow: 3px 3px 0 var(--yellow-dark), 0 0 20px rgba(255,203,5,0.3);
+      line-height: 1.6;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      margin-top: 0.75rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .pokeball-divider {
+      width: 40px;
+      height: 40px;
+      margin: 1rem auto;
+    }
+
+    .search-section {
+      width: 100%;
+      max-width: 500px;
+      display: flex;
+      gap: 10px;
+      margin-bottom: 2rem;
+    }
+
+    .search-section input {
+      flex: 1;
+      padding: 0.75rem 1.1rem;
+      border-radius: 50px;
+      border: 2px solid var(--card-border);
+      background: var(--card-bg);
+      color: var(--text);
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-section input:focus {
+      border-color: var(--yellow);
+    }
+
+    .search-section input::placeholder { color: var(--text-muted); }
+
+    .search-section button {
+      padding: 0.75rem 1.4rem;
+      border-radius: 50px;
+      border: none;
+      background: var(--red);
+      color: #fff;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .search-section button:hover { background: var(--red-dark); }
+    .search-section button:active { transform: scale(0.97); }
+
+    #resultado {
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 2.5rem;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .pokeball-spin {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 1rem;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .error-msg {
+      background: rgba(227,53,13,0.12);
+      border: 1px solid var(--red);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+      color: #ff8a80;
+    }
+
+    .error-msg .error-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .error-msg p { font-size: 0.95rem; }
+
+    .pokemon-card {
+      background: var(--card-bg);
+      border: 2px solid var(--card-border);
+      border-radius: 24px;
+      padding: 2rem;
+      animation: fadeIn 0.35s ease;
+    }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .sprite-wrap {
+      flex-shrink: 0;
+      width: 110px;
+      height: 110px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--card-border);
+    }
+
+    .sprite-wrap img {
+      width: 96px;
+      height: 96px;
+      image-rendering: pixelated;
+    }
+
+    .card-info { flex: 1; }
+
+    .pokemon-id {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .pokemon-name {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(0.8rem, 2.5vw, 1rem);
+      color: var(--yellow);
+      text-transform: capitalize;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .types {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .type-badge {
+      padding: 3px 14px;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #111;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 1rem;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 0.8rem 1rem;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 4px;
+    }
+
+    .stat-value {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    .abilities-section {
+      margin-top: 1rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 0.8rem 1rem;
+    }
+
+    .abilities-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 6px;
+    }
+
+    .abilities-list {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .ability-tag {
+      background: rgba(255,203,5,0.12);
+      border: 1px solid rgba(255,203,5,0.3);
+      color: var(--yellow);
+      border-radius: 50px;
+      padding: 3px 12px;
+      font-size: 0.8rem;
+      text-transform: capitalize;
+    }

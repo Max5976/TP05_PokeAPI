@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style></style>
+</head>
+<body>
+    <header>
+        <h1>PokeMax - La mejor forma de buscar tus pokemones</h1>
+    </header>
+    
+    <div class="busqueda">
+        <h1>Busca tu pokemón: </h1>
+        <p>Puedes poner nombre o ID</p>
+        <form onsubmit="mostrarPokemon(); return false;">
+            <input type="text" name="" id="inputPokemon" placeholder="Ej: Pikachu, 3">
+            <button id="botonBusqueda">Buscar</button>
+        </form>
+    </div>
+
+    <div id="resultado"></div>
+    <script src="script.js"></script>
+</body>
+</html>
