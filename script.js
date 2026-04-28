@@ -17,12 +17,14 @@ async function mostrarPokemon() {
         const tipos = data.types.map(t => t.type.name).join(', ');
         const peso = data.weight / 10;
         const altura = data.height / 10;
+        const id = data.id;
 
         resultado.innerHTML = `
             <div class="card">
                 <img src="${imagen}" alt="${nombre}" width="200">
-                <h2>${nombre}</h2>
-                <p><strong>Tipos:</strong> ${tipos}</p>
+                <h2>${nombre.charAt(0).toUpperCase() + nombre.slice(1)}</h2>
+                <p><strong>Id:</strong> ${id}</p>
+                <p><strong>Tipos:</strong> ${tipos.charAt(0).toUpperCase() + tipos.slice(1)}</p>
                 <p><strong>Peso:</strong> ${peso} kg</p>
                 <p><strong>Altura:</strong> ${altura} m</p>
             </div>
