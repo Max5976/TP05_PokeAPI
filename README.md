@@ -1,6 +1,6 @@
-## PokeMax
+# PokeMax
 
-# Una mini Pokédex web que permite buscar Pokémon por nombre o ID, desarrollada con HTML, CSS y JavaScript.
+## Una mini Pokédex web que permite buscar Pokémon por nombre o ID, desarrollada con HTML, CSS y JavaScript.
 
 Usamos form con onsumbit que llega a un método del script
 
