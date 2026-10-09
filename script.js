@@ -19,6 +19,10 @@ async function mostrarPokemon() {
         const altura = data.height / 10;
         const id = data.id;
 
+        const respuestaEspecie = await fetch(data.species.url);
+        const especie = await respuestaEspecie.json();
+        const generacion = especie.generation.name;
+
         resultado.innerHTML = `
             <div class="card">
                 <img src="${imagen}" alt="${nombre}" width="200">
@@ -27,6 +31,7 @@ async function mostrarPokemon() {
                 <p><strong>Tipos:</strong> ${tipos.charAt(0).toUpperCase() + tipos.slice(1)}</p>
                 <p><strong>Peso:</strong> ${peso} kg</p>
                 <p><strong>Altura:</strong> ${altura} m</p>
+                <p><strong>Generación:</strong> ${generacion}</p>
             </div>
         `;
         
