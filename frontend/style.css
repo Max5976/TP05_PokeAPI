@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Outfit:wght@400;700&display=swap');
 
 *, *::before, *::after {
@@ -10,13 +11,14 @@ body {
   font-family: 'Outfit', sans-serif;
   background: #0d0d0d;
   color: #f0f0f0;
-  min-height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-bottom: 2rem;
 }
 
+/* Encabezado */
 header {
   width: 100%;
   padding: 2rem 1.5rem;
@@ -25,20 +27,21 @@ header {
 
 header h1 {
   font-family: 'Press Start 2P', monospace;
-  font-size: 190%;
+  font-size: clamp(1.2rem, 4vw, 1.9rem);
   color: #ffde00;
-  text-shadow: 0 0 20px rgba(255,222,0,0.5);
-  margin-bottom: 0.5rem;
+  text-shadow: 0 0 20px rgba(255, 222, 0, 0.5);
+  margin-bottom: 0.8rem;
 }
 
 header p {
-  font-size: 105%;
+  font-size: 0.95rem;
   color: #00ccff;
-  font-weight: bolder;
+  font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
 
+/* Buscador */
 .busqueda {
   width: 100%;
   max-width: 480px;
@@ -48,16 +51,17 @@ header p {
 
 .busqueda h1 {
   font-family: 'Press Start 2P', monospace;
-  font-size: 75%;
+  font-size: 0.85rem;
+  line-height: 1.8;
   color: #ffffff;
   letter-spacing: 1px;
   text-transform: uppercase;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.5rem;
 }
 
 .busqueda p {
-  font-size: 95%;
-  color: #ffffff;
+  font-size: 0.95rem;
+  color: #bdbdbd;
   margin-bottom: 1rem;
 }
 
@@ -68,36 +72,38 @@ form {
 
 #inputPokemon {
   flex: 1;
-  padding-left: 4%;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  min-width: 0;
+  padding: 0.85rem 1rem;
   background: #161616;
   border: 1px solid #2a2a2a;
   border-radius: 8px;
   color: #f0f0f0;
   font-family: 'Outfit', sans-serif;
-  font-size: 105%;
+  font-size: 1rem;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 #inputPokemon:focus {
   border-color: #cc0000;
+  box-shadow: 0 0 0 3px rgba(204, 0, 0, 0.15);
 }
 
 #inputPokemon::placeholder {
-  color: #444444;
+  color: #777777;
 }
 
 #botonBusqueda {
-  padding: 0.75rem 1.5rem;
+  padding: 0.85rem 1.3rem;
   background: #cc0000;
   border: none;
   border-radius: 8px;
   color: #ffffff;
+  font-family: 'Outfit', sans-serif;
   font-weight: 700;
+  font-size: 0.95rem;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.2s;
   white-space: nowrap;
 }
 
@@ -109,21 +115,57 @@ form {
   transform: scale(0.98);
 }
 
+/* Resultado de la búsqueda */
 #resultado {
   width: 100%;
   max-width: 480px;
   padding: 0 1.2rem;
 }
 
+#resultado > h2 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: #ffde00;
+  text-align: center;
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+}
+
+#resultado > img {
+  display: block;
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  margin: 0 auto 1.2rem;
+  background: #161616;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+}
+
+#resultado > p {
+  background: #161616;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+#resultado > p:last-child {
+  margin-bottom: 0;
+}
+
+/* Clases disponibles para estados y tarjetas */
 .loading {
   text-align: center;
   padding: 2rem 0;
-  color: #444444;
-  font-size: 70%;
+  color: #aaaaaa;
 }
 
 .error {
-  background: rgba(204,0,0,0.1);
+  background: rgba(204, 0, 0, 0.1);
   border: 1px solid #cc0000;
   border-radius: 8px;
   padding: 1.5rem;
@@ -132,9 +174,10 @@ form {
 
 .error p {
   color: #ff3333;
-  font-size: 90%;
+  font-size: 0.95rem;
 }
 
+/* Tarjetas, por si después ampliás el resultado */
 .card {
   background: #161616;
   border: 1px solid #2a2a2a;
@@ -153,14 +196,15 @@ form {
 
 .card h2 {
   font-family: 'Press Start 2P', monospace;
-  font-size: 85%;
+  font-size: 0.85rem;
+  line-height: 1.8;
   color: #ffde00;
   margin-bottom: 1rem;
   text-transform: capitalize;
 }
 
 .card p {
-  font-size: 90%;
+  font-size: 0.95rem;
   color: #f0f0f0;
   margin-bottom: 0.5rem;
   line-height: 1.5;
@@ -170,99 +214,17 @@ form {
   color: #ffde00;
 }
 
-.card-hero {
-  background: #1a1a1a;
-  padding: 1.5rem;
-  text-align: center;
-  border-bottom: 1px solid #2a2a2a;
-}
+/* Adaptación a celulares */
+@media (max-width: 380px) {
+  header {
+    padding: 1.5rem 1rem;
+  }
 
-.card-hero img {
-  width: 140px;
-  height: 140px;
-  object-fit: contain;
-}
+  .busqueda h1 {
+    font-size: 0.7rem;
+  }
 
-.card-body {
-  padding: 1.5rem;
-}
-
-.card-body h2 {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 85%;
-  text-transform: capitalize;
-  color: #ffde00;
-  margin-bottom: 1rem;
-}
-
-.tipos {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 1rem;
-}
-
-.tipo {
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 70%;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #111111;
-  background: #ffdd00;
-}
-
-.stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-
-.stat {
-  background: #1a1a1a;
-  border: 1px solid #2a2a2a;
-  border-radius: 6px;
-  padding: 0.8rem;
-  text-align: center;
-}
-
-.stat-label {
-  font-size: 60%;
-  color: #444444;
-  text-transform: uppercase;
-  margin-bottom: 5px;
-}
-
-.stat-value {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 70%;
-  color: #ffde00;
-}
-
-.abilities {
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid #2a2a2a;
-}
-
-.abilities .stat-label {
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.ability-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.ability {
-  background: rgba(255,222,0,0.1);
-  border: 1px solid rgba(255,222,0,0.3);
-  color: #ffde00;
-  border-radius: 15px;
-  padding: 3px 10px;
-  font-size: 70%;
-  font-weight: 600;
-  text-transform: capitalize;
+  #botonBusqueda {
+    padding: 0.85rem 0.9rem;
+  }
 }

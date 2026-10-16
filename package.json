@@ -1,0 +1,31 @@
+{
+  "name": "tp05_pokeapi",
+  "version": "1.0.0",
+  "description": "Usamos form con onsumbit que llega a un método del script",
+  "main": "script.js",
+  "scripts": {
+    "start": "node --use-system-ca backend/app.js",
+    "swagger": "node backend/swagger.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Max5976/TP05_PokeAPI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Max5976/TP05_PokeAPI/issues"
+  },
+  "homepage": "https://github.com/Max5976/TP05_PokeAPI#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.3.0",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "swagger-autogen": "^2.23.7"
+  }
+}
