@@ -26,7 +26,7 @@ Se han agregado nuevos cambios en ésta etapa:
 - **Live Server:** Uso de la extensión "live server" para correr el frontend con el backend fácilmente.
 - **Apertura con npm start:** El programa ahora se abre con npm start que ejecuta "node --use-system-ca app.js". La opción --use-system-ca permite que Node.js use los certificados confiables de Windows para validar las conexiones HTTPS. Esto es necesario porque, al ejecutar node app.js sin esa opción, la conexión con PokéAPI falla por problemas de confianza con el certificado SSL/TLS. Al usar éste comando aparece la ruta en la que se ejecuta y la ruta para probar con swagger.
 
-### Instalación de dependencias
+## Instalación de dependencias
 
 Para instalar las librerías necesarias, ejecutar:
 
